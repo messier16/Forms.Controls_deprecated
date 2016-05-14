@@ -6,7 +6,10 @@ using CoreGraphics;
 using Messier16.Forms.Controls;
 using Messier16.Forms.iOS.Controls.Native.RatingBar;
 using Xamarin.Forms.Platform.iOS;
+using Xamarin.Forms;
+using Messier16.Forms.iOS.Controls;
 
+[assembly: ExportRenderer(typeof(RatingBar), typeof(RatingBarRenderer))]
 namespace Messier16.Forms.iOS.Controls
 {
     public class RatingBarRenderer : ViewRenderer<RatingBar, EDStarRating>
