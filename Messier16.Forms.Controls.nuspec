@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <package>
   <metadata>
-    <id>$id$</id>
-    <version>$version$</version>
-    <title>$title$</title>
+    <id>Messier16.Forms.Controls</id>
+    <version>0.0.0.1</version>
+    <title>Messier16 controls for Xamarin.Forms</title>
     <authors>Antonio Feregrino</authors>
     <owners>Messier16</owners>
     <projectUrl>https://github.com/Messier16/Forms.Controls</projectUrl>
