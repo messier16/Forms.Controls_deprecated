@@ -24,7 +24,7 @@ namespace Messier16.Forms.iOS.Controls
 
         protected override void OnElementChanged(ElementChangedEventArgs<RatingBar> e)
         {
-            if (Element == null) return;
+            if (e.OldElement != null || Element == null) return;
 
             if (Control == null)
             {

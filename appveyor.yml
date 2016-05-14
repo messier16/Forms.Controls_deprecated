@@ -3,7 +3,7 @@ configuration: Release
 before_build:
   - nuget restore
 artifacts:
-  - path: Messier16.Forms.Controls.0.0.1.2-beta.nupkg
+  - path: Messier16.Forms.Controls.0.0.1.3-beta.nupkg
     name: nuget_pack
 after_build:
   - nuget pack "Messier16.Forms.Controls.nuspec" 

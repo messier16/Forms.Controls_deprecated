@@ -33,7 +33,7 @@ namespace Messier16.Forms.iOS.Controls
         /// <param name="e">The e.</param>
         protected override void OnElementChanged(ElementChangedEventArgs<Checkbox> e)
         {
-            if (Element == null) return;
+            if (e.OldElement != null || Element == null) return;
 
             BackgroundColor = Element.BackgroundColor.ToUIColor();
             if (Control == null)
