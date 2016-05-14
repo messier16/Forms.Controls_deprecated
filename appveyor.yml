@@ -1,0 +1,18 @@
+version: '0.0.1.{build}'
+before_build:
+  - nuget restore
+artifacts:
+  - path: Messier16.Forms.Controls.$(APPVEYOR_BUILD_VERSION).nupkg
+    name: nuget_pack
+assembly_info:
+  patch: true
+  file: '**\AssemblyInfo.*'
+  assembly_version: '{version}'
+  assembly_file_version: '{version}'
+  assembly_informational_version: '{version}'
+build:
+  project: Messier16.Forms.Controls.sln
+  publish_nuget: true
+  publish_nuget_symbols: false
+  include_nuget_references: true
+  verbosity: minimal
