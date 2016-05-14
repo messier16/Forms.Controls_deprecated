@@ -9,7 +9,8 @@ namespace TestApp.Pages
     {
         public RatingBarPage()
         {
-            Children.Add(new RatingBarCodePage { Title ="Code" });
+            Children.Add(new RatingBarCodePage { Title = "Code", Icon="code.png" });
+            Children.Add(new RatingBarXamlPage { Title = "Code", Icon = "xaml.png" });
         }
     }
 }

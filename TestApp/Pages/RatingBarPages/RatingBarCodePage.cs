@@ -28,7 +28,6 @@ namespace TestApp.Pages.RatingBarPages
             ratingBeer.MaxRating = 5;
             ratingBeer.HeightRequest = 50;
 
-            Grid.SetColumnSpan(ratingBeer, 2);
 
             var rating2Label = new Label
             {
@@ -38,10 +37,25 @@ namespace TestApp.Pages.RatingBarPages
                 HorizontalTextAlignment = TextAlignment.Center
             };
 
-            ratingBar2.PropertyChanged += (sender, e) => 
+
+            var ratingBeerLabel = new Label
             {
-                if(e.PropertyName.Equals("Rating"))   
+                Text = ratingBeer.Rating + " beer",
+                VerticalOptions = LayoutOptions.Center,
+                HorizontalOptions = LayoutOptions.CenterAndExpand,
+                HorizontalTextAlignment = TextAlignment.Center
+            };
+
+            ratingBar2.PropertyChanged += (sender, e) =>
+            {
+                if (e.PropertyName.Equals("Rating"))
                     rating2Label.Text = ratingBar2.Rating.ToString();
+            };
+
+            ratingBeer.PropertyChanged += (sender, e) =>
+            {
+                if (e.PropertyName.Equals("Rating"))
+                    ratingBeerLabel.Text = ratingBeer.Rating + " beer";
             };
 
             var grid = new Grid
@@ -54,15 +68,18 @@ namespace TestApp.Pages.RatingBarPages
                 RowDefinitions = 
                 {
                     new RowDefinition { Height = new GridLength(1,GridUnitType.Auto)},
+                    new RowDefinition { Height = new GridLength(1,GridUnitType.Auto)},
                     new RowDefinition { Height = new GridLength(1,GridUnitType.Auto)}
                 }
             };
-
-
+            
 
             grid.Children.Add(ratingBar2, 0, 0);
             grid.Children.Add(rating2Label, 1, 0);
-            grid.Children.Add(ratingBeer, 0 , 1);
+            grid.Children.Add(ratingBeer, 0, 1);
+            grid.Children.Add(ratingBeerLabel, 0, 2);
+            Grid.SetColumnSpan(ratingBeer, 2);
+            Grid.SetColumnSpan(ratingBeerLabel, 2);
 
 
             Content = new StackLayout
