@@ -25,14 +25,14 @@
     <!--Xamarin.iOS-->
     <file src="iOS.Controls\bin\Release\Messier16.Forms.iOS.Controls.dll" target="lib\MonoTouch10\Messier16.Forms.iOS.Controls.dll" />
     <!-- <file src="iOS.Controls\bin\Release\Messier16.Forms.iOS.Controls.xml" target="lib\MonoTouch10\Messier16.Forms.iOS.Controls.xml" /> -->
-    <file src="Forms\bin\Release\Messier16.Forms.Controls.dll" target="lib\MonoTouch10\Messier16.Forms.Controls.dll" />
-    <file src="Forms\bin\Release\Messier16.Forms.Controls.xml" target="lib\MonoTouch10\Messier16.Forms.Controls.xml" />
+    <file src="Controls\bin\Release\Messier16.Forms.Controls.dll" target="lib\MonoTouch10\Messier16.Forms.Controls.dll" />
+    <!-- <file src="Controls\bin\Release\Messier16.Forms.Controls.xml" target="lib\MonoTouch10\Messier16.Forms.Controls.xml" /> -->
 
     <!--Xamarin.iOSUnified-->	 
     <file src="iOS.Controls\bin\Release\Messier16.Forms.iOS.Controls.dll" target="lib\Xamarin.iOS10\Messier16.Forms.iOS.Controls.dll" />
    <!-- <file src="iOS.Controls\bin\Release\Messier16.Forms.iOS.Controls.xml" target="lib\Xamarin.iOS10\Messier16.Forms.iOS.Controls.xml" /> -->
     <file src="Controls\bin\Release\Messier16.Forms.Controls.dll" target="lib\Xamarin.iOS10\Messier16.Forms.Controls.dll" />
-    <file src="Controls\bin\Release\Messier16.Forms.Controls.xml" target="lib\Xamarin.iOS10\Messier16.Forms.Controls.xml" />
+    <!-- <file src="Controls\bin\Release\Messier16.Forms.Controls.xml" target="lib\Xamarin.iOS10\Messier16.Forms.Controls.xml" /> -->
 
   </files>
 </package>
