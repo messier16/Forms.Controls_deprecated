@@ -4,6 +4,8 @@ before_build:
 artifacts:
   - path: Messier16.Forms.Controls.$(APPVEYOR_BUILD_VERSION).nupkg
     name: nuget_pack
+after_build:
+  - nuget pack "C:\projects\forms-controls\Messier16.Forms.Controls.nuspec" -Properties "Configuration=Debug;Platform=AnyCPU" -IncludeReferencedProjects
 assembly_info:
   patch: true
   file: '**\AssemblyInfo.*'
