@@ -24,6 +24,8 @@ namespace Messier16.Forms.iOS.Controls
 
         protected override void OnElementChanged(ElementChangedEventArgs<RatingBar> e)
         {
+            if (Element == null) return;
+
             if (Control == null)
             {
                 // Instantiate the native control and assign it to the Control property
@@ -60,11 +62,13 @@ namespace Messier16.Forms.iOS.Controls
 
         protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
+            if (Element == null || Control == null) return;
+
             if (e.PropertyName.Equals(nameof(RatingBar.Rating)))
             {
                 Control.Rating = Element.Rating;
             }
-           else  if (e.PropertyName.Equals(nameof(RatingBar.IsEnabled)))
+            else if (e.PropertyName.Equals(nameof(RatingBar.IsEnabled)))
             {
                 Control.IsEditable = Element.IsEnabled;
             }

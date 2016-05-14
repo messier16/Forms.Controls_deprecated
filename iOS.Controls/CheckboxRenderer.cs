@@ -33,9 +33,9 @@ namespace Messier16.Forms.iOS.Controls
         /// <param name="e">The e.</param>
         protected override void OnElementChanged(ElementChangedEventArgs<Checkbox> e)
         {
+            if (Element == null) return;
 
             BackgroundColor = Element.BackgroundColor.ToUIColor();
-
             if (Control == null)
             {
                 // Instantiate the native control and assign it to the Control property
@@ -79,7 +79,8 @@ namespace Messier16.Forms.iOS.Controls
 
         protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            base.OnElementPropertyChanged(sender, e);
+            if (Element == null || Control == null) return;
+
             if (e.PropertyName == nameof(Element.IsEnabled))
             {
                 Control.SetEnabled(Element.IsEnabled);
