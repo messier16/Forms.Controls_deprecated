@@ -1,4 +1,5 @@
 version: '0.0.1.{build}'
+configuration: Release
 before_build:
   - nuget restore
 artifacts:
