@@ -9,7 +9,9 @@ namespace TestApp.Pages
     {
         public CheckboxPage()
         {
-            Children.Add(new CheckboxCodePage { Title ="Code", Icon ="code.png"});
+            Title = "Checkbox";
+            Children.Add(new CheckboxCodePage { Title = "Code", Icon = "code.png"});
+            Children.Add(new CheckboxXamlPage { Title = "Markup", Icon = "xaml.png"});
         }
     }
 }

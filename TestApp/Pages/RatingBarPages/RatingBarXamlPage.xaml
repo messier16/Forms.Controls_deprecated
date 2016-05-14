@@ -2,8 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:messier16="clr-namespace:Messier16.Forms.Controls;assembly=Messier16.Forms.Controls"
-             x:Class="TestApp.Pages.RatingBarPages.RatingBarXamlPage"
-             >
+             x:Class="TestApp.Pages.RatingBarPages.RatingBarXamlPage">
+
   <StackLayout VerticalOptions="Center">
     <messier16:RatingBar FilledImage="star_filled.png" Image="star.png" MaxRating="10" HeightRequest="50" />
     <Grid>

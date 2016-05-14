@@ -12,6 +12,8 @@ namespace TestApp.Pages
 
         public HomePage()
         {
+            Title = "Messier16 Controls";
+
             GoToRatingBarButton = new Button();
             GoToRatingBarButton.Text = "RatingBar";
             GoToRatingBarButton.Clicked += GoToButton_Clicked;
