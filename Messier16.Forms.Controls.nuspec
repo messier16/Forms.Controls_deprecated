@@ -5,11 +5,13 @@
     <version>$version$</version>
     <title>$title$</title>
     <authors>Antonio Feregrino</authors>
+    <owners>Messier16</owners>
     <projectUrl>https://github.com/Messier16/Forms.Controls</projectUrl>
     <iconUrl>https://raw.githubusercontent.com/ThatCSharpGuy/Jirapi/master/icon.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
     <releaseNotes></releaseNotes>
+    <copyright>Antonio Feregrino, 2016</copyright>
     <tags>Xamarin.Forms, Xamarin</tags>
   </metadata>
 </package>
