@@ -39,5 +39,6 @@ I'm not the smartest guy regarding licensing terms and stuff, but:
 - This project uses a port of [Marxon13's M13Checkbox](https://github.com/Marxon13/M13Checkbox) which is under the MIT License
 - This project uses a port of [erndev's EDStarRating](https://github.com/erndev/EDStarRating) which is under the BSD License
 - This project uses (and takes a lor of inspiration from) [XLabs' controls](https://github.com/XLabs/Xamarin-Forms-Labs) which are under the Apache 2.0 license
+- This project uses [xvare's UWPRatingControl](https://github.com/xvare/UWPRatingControl) which is under... who knows?
 
 If you could explain to me (@fferegrino) how does those licenses work it would be greatly appreciated. And if you asked under which license the Messier16 controls are I'd say they're under MIT License.
