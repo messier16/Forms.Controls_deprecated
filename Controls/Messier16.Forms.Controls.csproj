@@ -35,13 +35,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="App.cs" />
     <Compile Include="Checkbox.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RatingBar.cs" />
+    <Compile Include="SegmentedControl.cs" />
+    <Compile Include="SegmentedControlOption.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="GettingStarted.Xamarin" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

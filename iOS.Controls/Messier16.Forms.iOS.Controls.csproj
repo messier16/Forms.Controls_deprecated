@@ -52,6 +52,7 @@
     <Folder Include="Resources\" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="SegmentedControlRenderer.cs" />
     <Compile Include="CheckboxRenderer.cs" />
     <Compile Include="GenericEventArgs.cs" />
     <Compile Include="Native\Checkbox\CheckView.cs" />

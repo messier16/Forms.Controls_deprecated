@@ -30,6 +30,10 @@
     <ConsolePause>false</ConsolePause>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Pages\SegmentedControlPages\SegmentedControlCodePage.cs" />
+    <Compile Include="Pages\SegmentedControlPages\SegmentedControlXamlPage.xaml.cs">
+      <DependentUpon>SegmentedControlXamlPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\RatingBarPages\RatingBarXamlPage.xaml.cs">
       <DependentUpon>RatingBarXamlPage.xaml</DependentUpon>
     </Compile>
@@ -71,7 +75,12 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\SegmentedControlPages\SegmentedControlXamlPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Pages\RatingBarPages\RatingBarXamlPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
@@ -81,7 +90,5 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Converters\" />
-  </ItemGroup>
+  <ItemGroup />
 </Project>
