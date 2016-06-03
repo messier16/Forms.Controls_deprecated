@@ -85,7 +85,6 @@
     <Compile Include="CheckboxRenderer.cs" />
     <Compile Include="Messier16Controls.cs" />
     <Compile Include="RatingBarRenderer.cs" />
-    <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
