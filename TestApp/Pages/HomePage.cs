@@ -6,9 +6,10 @@ namespace TestApp.Pages
 {
     public class HomePage : ContentPage
     {
-        
+
         private Button GoToRatingBarButton;
         private Button GoToCheckboxButton;
+        private Button GoToSegmentedControl;
 
         public HomePage()
         {
@@ -23,23 +24,30 @@ namespace TestApp.Pages
             GoToCheckboxButton.Text = "Checkbox";
             GoToCheckboxButton.Clicked += GoToButton_Clicked;
 
+            GoToSegmentedControl = new Button();
+            GoToSegmentedControl.Text = "SegmentedControl";
+            GoToSegmentedControl.Clicked += GoToButton_Clicked;
+
             Content = new StackLayout
-            { 
+            {
                 Children =
                 {
                     GoToRatingBarButton,
-                            GoToCheckboxButton
+                            GoToCheckboxButton,
+                            GoToSegmentedControl
                 }
             };
         }
 
-        async void  GoToButton_Clicked (object sender, EventArgs e)
+        async void GoToButton_Clicked(object sender, EventArgs e)
         {
             var b = sender as Button;
             if (b == GoToRatingBarButton)
                 await App.Navigation.PushAsync(new RatingBarPage());
             if (b == GoToCheckboxButton)
                 await App.Navigation.PushAsync(new CheckboxPage());
+            if (b == GoToSegmentedControl)
+                await App.Navigation.PushAsync(new SegmentedControlPage());
         }
     }
 }

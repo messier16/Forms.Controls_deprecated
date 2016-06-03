@@ -5,23 +5,15 @@
              x:Class="TestApp.Pages.SegmentedControlPages.SegmentedControlXamlPage">
 
   <StackLayout VerticalOptions="Center">
-    <messier16:RatingBar FilledImage="star_filled.png" Image="star.png" MaxRating="10" HeightRequest="50" />
+    
     <Grid>
-      <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="3*"></ColumnDefinition>
-        <ColumnDefinition Width="1*"></ColumnDefinition>
-      </Grid.ColumnDefinitions>
-      <Grid.RowDefinitions>
-        <RowDefinition Height="Auto"></RowDefinition>
-        <RowDefinition Height="Auto"></RowDefinition>
-        <RowDefinition Height="Auto"></RowDefinition>
-      </Grid.RowDefinitions>
-      
-      <messier16:RatingBar Rating="{Binding Rating, Mode=TwoWay}" FilledImage="star_filled.png" Image="star.png" MaxRating="5" HeightRequest="50" />
-      <Label Text="{Binding Rating}" Grid.Column="1" Grid.Row="0" VerticalOptions="Center" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center"></Label>
-
-      <messier16:RatingBar Rating="{Binding BeerRating, Mode=TwoWay}" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" FilledImage="beer_filled.png" Image="beer.png" MaxRating="5" HeightRequest="50" />
-      <Label Text="{Binding BeerRating, StringFormat='{0} beer'}" Grid.Column="0" Grid.ColumnSpan="2"  Grid.Row="2" VerticalOptions="Center" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center"></Label>
+      <messier16:SegmentedControl>
+        <messier16:SegmentedControl.Children>
+          <messier16:SegmentedControlOption Text="Valor 1" />
+          <messier16:SegmentedControlOption Text="Valor 2" />
+          <messier16:SegmentedControlOption Text="Valor 3" />
+        </messier16:SegmentedControl.Children>
+      </messier16:SegmentedControl>
     </Grid>
   </StackLayout>
 </ContentPage>

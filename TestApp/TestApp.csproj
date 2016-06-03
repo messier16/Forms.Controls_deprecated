@@ -30,6 +30,7 @@
     <ConsolePause>false</ConsolePause>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Pages\SegmentedControlPage.cs" />
     <Compile Include="Pages\SegmentedControlPages\SegmentedControlCodePage.cs" />
     <Compile Include="Pages\SegmentedControlPages\SegmentedControlXamlPage.xaml.cs">
       <DependentUpon>SegmentedControlXamlPage.xaml</DependentUpon>
