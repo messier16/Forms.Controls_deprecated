@@ -20,7 +20,7 @@ namespace TestApp.iOS
 
             Messier16Controls.InitAll();
 
-            UIControl.Appearance.TintColor = App.AppTint.ToUIColor();
+//            UIControl.Appearance.TintColor = App.AppTint.ToUIColor();
 
             return base.FinishedLaunching(app, options);
         }
