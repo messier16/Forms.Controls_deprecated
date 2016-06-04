@@ -19,10 +19,28 @@ namespace Messier16.Forms.Controls
         public static readonly BindableProperty SelectedIndexProperty =
             BindableProperty.Create(nameof(SelectedIndex), typeof (int), typeof (SegmentedControl), 0);
 
+//        public static readonly BindableProperty SelectedTextProperty =
+//            BindableProperty.Create(nameof(SelectedText), typeof (string), typeof (SegmentedControl), 
+//                defaultBindingMode: BindingMode.OneWayToSource);
+
         public int SelectedIndex
         {
             get { return (int) GetValue(SelectedIndexProperty); }
-            set { SetValue(SelectedIndexProperty, value); }
+            set { SetValue(SelectedIndexProperty, value); 
+                OnPropertyChanged(nameof(SelectedText)); }
+        }
+
+        public string SelectedText 
+        {
+            get { return this.Children[SelectedIndex].Text; }
+        }
+
+        public SegmentedControlOption this [int index]
+        {
+            get
+            {
+                return Children[index];
+            }
         }
 
         #region IViewContainer implementation
