@@ -16,15 +16,18 @@ namespace TestApp.Pages
             Title = "Messier16 Controls";
 
             GoToRatingBarButton = new Button();
+			GoToRatingBarButton.AutomationId = nameof(GoToRatingBarButton);
             GoToRatingBarButton.Text = "RatingBar";
             GoToRatingBarButton.Clicked += GoToButton_Clicked;
 
 
             GoToCheckboxButton = new Button();
+			GoToCheckboxButton.AutomationId = nameof(GoToCheckboxButton);
             GoToCheckboxButton.Text = "Checkbox";
             GoToCheckboxButton.Clicked += GoToButton_Clicked;
 
             GoToSegmentedControl = new Button();
+			GoToSegmentedControl.AutomationId = nameof(GoToSegmentedControl);
             GoToSegmentedControl.Text = "SegmentedControl";
             GoToSegmentedControl.Clicked += GoToButton_Clicked;
 

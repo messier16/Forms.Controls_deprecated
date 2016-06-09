@@ -11,6 +11,7 @@ namespace TestApp.Pages
         public SegmentedControlPage()
         {
             Title = "SegmentedControl";
+			AutomationId = "page";
 
             Children.Add(new SegmentedControlCodePage { Title = "Code", Icon="code.png" });
             Children.Add(new SegmentedControlXamlPage { Title = "Markup", Icon = "xaml.png" });

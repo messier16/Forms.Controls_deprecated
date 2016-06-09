@@ -10,8 +10,9 @@ namespace TestApp.Pages
         public RatingBarPage()
         {
             Title = "RatingBar";
+			AutomationId = "page";
 
-            Children.Add(new RatingBarCodePage { Title = "Code", Icon="code.png" });
+            Children.Add(new RatingBarCodePage { Title = "Code" , Icon="code.png" });
             Children.Add(new RatingBarXamlPage { Title = "Markup", Icon = "xaml.png" });
         }
     }

@@ -6,6 +6,7 @@ using Foundation;
 using UIKit;
 using Messier16.Forms.iOS.Controls;
 using Xamarin.Forms.Platform.iOS;
+using Xamarin.Forms;
 
 namespace TestApp.iOS
 {
@@ -14,9 +15,23 @@ namespace TestApp.iOS
     {
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
-            global::Xamarin.Forms.Forms.Init();
 
-            LoadApplication(new App());
+#if ENABLE_TEST_CLOUD
+			// requires Xamarin Test Cloud Agent
+			Xamarin.Calabash.Start();
+#endif
+			global::Xamarin.Forms.Forms.Init();
+
+			Forms.ViewInitialized += (object sender, ViewInitializedEventArgs e) =>
+			{
+				// http://developer.xamarin.com/recipes/testcloud/set-accessibilityidentifier-ios/
+				if (null != e.View.AutomationId)
+				{
+					e.NativeView.AccessibilityIdentifier = e.View.AutomationId;
+				}
+			};
+
+			LoadApplication(new App());
 
             Messier16Controls.InitAll();
 

@@ -10,6 +10,8 @@ namespace TestApp.Pages
         public CheckboxPage()
         {
             Title = "Checkbox";
+			AutomationId = "page";
+
             Children.Add(new CheckboxCodePage { Title = "Code", Icon = "code.png"});
             Children.Add(new CheckboxXamlPage { Title = "Markup", Icon = "xaml.png"});
         }
