@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
+    <Folder Include="Native\MaskedEntry\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="SegmentedControlRenderer.cs" />
@@ -63,6 +64,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RatingBarRenderer.cs" />
     <Compile Include="Messier16Controls.cs" />
+    <Compile Include="MaskedEntryRenderer.cs" />
+    <Compile Include="Native\MaskedEntry\VMaskEditor.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Controls\Messier16.Forms.Controls.csproj">

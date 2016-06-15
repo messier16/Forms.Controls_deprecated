@@ -1,5 +1,5 @@
 ﻿using System;
-
+using Messier16.Forms.Controls;
 using Xamarin.Forms;
 
 namespace TestApp.Pages
@@ -31,13 +31,16 @@ namespace TestApp.Pages
             GoToSegmentedControl.Text = "SegmentedControl";
             GoToSegmentedControl.Clicked += GoToButton_Clicked;
 
+			var maskedEntry = new MaskedEntry();
+
             Content = new StackLayout
             {
                 Children =
                 {
                     GoToRatingBarButton,
                             GoToCheckboxButton,
-                            GoToSegmentedControl
+                            GoToSegmentedControl,
+					maskedEntry
                 }
             };
         }

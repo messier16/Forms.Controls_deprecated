@@ -9,6 +9,7 @@ namespace Messier16.Forms.iOS.Controls
             CheckboxRenderer.Init();
             RatingBarRenderer.Init();
             SegmentedControlRenderer.Init();
+			MaskedEntryRenderer.Init();
         }
     }
 }
