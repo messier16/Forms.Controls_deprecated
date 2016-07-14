@@ -65,7 +65,6 @@
     <Compile Include="RatingBarRenderer.cs" />
     <Compile Include="Messier16Controls.cs" />
     <Compile Include="MaskedEntryRenderer.cs" />
-    <Compile Include="Native\MaskedEntry\VMaskEditor.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Controls\Messier16.Forms.Controls.csproj">
