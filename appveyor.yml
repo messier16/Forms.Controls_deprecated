@@ -25,4 +25,4 @@ deploy:
     secure: XImXaAhmv7juP3N1QLgjU+V2u1+QjEXJnj3mv3U1uCjSzOa8c+LTl2KP3s/ClxhJ
   artifact: /.*\.nupkg/
   on:
-    branch: master
+    branch: masked-entries
