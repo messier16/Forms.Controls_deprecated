@@ -7,6 +7,7 @@ namespace Messier16.Forms.Controls
 	{
 		public MaskedEntry()
 		{
+			Keyboard = Keyboard.Numeric;
 		}
 	}
 }

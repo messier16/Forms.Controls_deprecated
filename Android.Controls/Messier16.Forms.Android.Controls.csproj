@@ -89,6 +89,7 @@
     <Compile Include="SegmentedControlRenderer.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Native\SegmentedControl\SegmentedControlButton.cs" />
+    <Compile Include="MaskedEntryRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
