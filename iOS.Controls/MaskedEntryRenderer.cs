@@ -42,18 +42,48 @@ namespace Messier16.Forms.iOS.Controls
 				
 		}
 
+		int DumbParse(string input)
+		{
+			var number = 0;
+
+			int multiply = 1;
+			for (int i = input.Length -1; i >= 0; i--)
+			{
+				if (Char.IsDigit(input[i]))
+				{
+					number += (input[i] - '0') * (multiply);
+					multiply *= 10;
+				}
+			}
+			return number;
+		}
+
+		bool shouldListen = true;
 		void FormatNumber(object sender, EventArgs e)
 		{
-			var text = Control?.Text;
-			var number = 0.0;
+			if (!shouldListen) return;
+			var startPosition = Control.BeginningOfDocument;
+			var endPosition = Control.EndOfDocument;
+			var selectedRange = Control.SelectedTextRange;
 
-			Double.TryParse(text, out number);
+			var cursorPosition = Control.GetOffsetFromPosition(startPosition, selectedRange.Start);
 
-			var formatter = new NSNumberFormatter();
-			formatter.NumberStyle = NSNumberFormatterStyle.Decimal;
+			shouldListen = false;
+			var oldText = Control?.Text ?? "0";
+			var number = DumbParse(oldText);
 
-			var output = formatter.StringFromNumber(number);
+			var output = $"{number:#,###,###,##0}";
+
 			Control.Text = output;
+
+			var change = -1 *(oldText.Length - output.Length);
+				var newPosition = Control.GetPosition(selectedRange.Start, (nint)change);
+			if (newPosition != null) // before we fail miserably
+			{
+				Control.SelectedTextRange = Control.GetTextRange(newPosition, newPosition);
+			}
+
+			shouldListen = true;
 		}
 	}
 }
