@@ -59,14 +59,13 @@ namespace Messier16.Forms.iOS.Controls
 		}
 
 		bool shouldListen = true;
+
+		// From http://stackoverflow.com/questions/34922331/getting-and-setting-cursor-position-of-uitextfield-and-uitextview-in-swift
 		void FormatNumber(object sender, EventArgs e)
 		{
 			if (!shouldListen) return;
 			var startPosition = Control.BeginningOfDocument;
-			var endPosition = Control.EndOfDocument;
 			var selectedRange = Control.SelectedTextRange;
-
-			var cursorPosition = Control.GetOffsetFromPosition(startPosition, selectedRange.Start);
 
 			shouldListen = false;
 			var oldText = Control?.Text ?? "0";
@@ -77,7 +76,8 @@ namespace Messier16.Forms.iOS.Controls
 			Control.Text = output;
 
 			var change = -1 *(oldText.Length - output.Length);
-				var newPosition = Control.GetPosition(selectedRange.Start, (nint)change);
+			var newPosition = Control.GetPosition(selectedRange.Start, (nint)change);
+
 			if (newPosition != null) // before we fail miserably
 			{
 				Control.SelectedTextRange = Control.GetTextRange(newPosition, newPosition);
