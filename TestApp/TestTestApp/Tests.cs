@@ -45,6 +45,20 @@ namespace TestTestApp
 		}
 
 		[Test]
+		public void EnterText()
+		{
+			app.EnterText("maskedEntry", "154569");
+			app.Screenshot("154569");
+			app.ClearText("maskedEntry");
+			app.EnterText("maskedEntry", "488631");
+			app.Screenshot("488631");
+			app.ClearText("maskedEntry");
+			app.EnterText("maskedEntry", "1006998891778630");
+			app.Screenshot("1006998891778630");
+			app.ClearText("maskedEntry");
+		}
+
+		[Test]
 		public void StartRepl()
 		{
 			app.Repl();

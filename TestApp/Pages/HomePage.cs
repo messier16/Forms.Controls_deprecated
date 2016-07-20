@@ -31,7 +31,7 @@ namespace TestApp.Pages
             GoToSegmentedControl.Text = "SegmentedControl";
             GoToSegmentedControl.Clicked += GoToButton_Clicked;
 
-			var maskedEntry = new MaskedEntry();
+			var maskedEntry = new MaskedEntry() { AutomationId = "maskedEntry" };
 
             Content = new StackLayout
             {
