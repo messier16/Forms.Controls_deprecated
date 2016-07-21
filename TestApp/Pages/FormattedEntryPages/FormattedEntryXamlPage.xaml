@@ -5,7 +5,7 @@
              x:Class="TestApp.Pages.FormattedEntryPages.FormattedEntryXamlPage">
 
   <StackLayout VerticalOptions="Center">
-		<messier16:FormattedEntry />
-		<messier16:FormattedEntry />
+    <messier16:FormattedNumberEntry />
+    <messier16:FormattedNumberEntry />
   </StackLayout>
 </ContentPage>
