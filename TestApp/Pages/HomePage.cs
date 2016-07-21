@@ -9,7 +9,8 @@ namespace TestApp.Pages
 
         private Button GoToRatingBarButton;
         private Button GoToCheckboxButton;
-        private Button GoToSegmentedControl;
+		private Button GoToSegmentedControl;
+		private Button GoToFormattedEntryButton;
 
         public HomePage()
         {
@@ -26,21 +27,24 @@ namespace TestApp.Pages
             GoToCheckboxButton.Text = "Checkbox";
             GoToCheckboxButton.Clicked += GoToButton_Clicked;
 
-            GoToSegmentedControl = new Button();
+			GoToSegmentedControl = new Button();
 			GoToSegmentedControl.AutomationId = nameof(GoToSegmentedControl);
-            GoToSegmentedControl.Text = "SegmentedControl";
-            GoToSegmentedControl.Clicked += GoToButton_Clicked;
+			GoToSegmentedControl.Text = "SegmentedControl";
+			GoToSegmentedControl.Clicked += GoToButton_Clicked;
 
-			var maskedEntry = new MaskedEntry() { AutomationId = "maskedEntry" };
+			GoToFormattedEntryButton = new Button();
+			GoToFormattedEntryButton.AutomationId = nameof(GoToFormattedEntryButton);
+			GoToFormattedEntryButton.Text = "FormattedEntry";
+			GoToFormattedEntryButton.Clicked += GoToButton_Clicked;
 
             Content = new StackLayout
             {
                 Children =
                 {
                     GoToRatingBarButton,
-                            GoToCheckboxButton,
-                            GoToSegmentedControl,
-					maskedEntry
+                    GoToCheckboxButton,
+                    GoToSegmentedControl,
+					GoToFormattedEntryButton
                 }
             };
         }
@@ -52,8 +56,10 @@ namespace TestApp.Pages
                 await App.Navigation.PushAsync(new RatingBarPage());
             if (b == GoToCheckboxButton)
                 await App.Navigation.PushAsync(new CheckboxPage());
-            if (b == GoToSegmentedControl)
-                await App.Navigation.PushAsync(new SegmentedControlPage());
+			if (b == GoToSegmentedControl)
+				await App.Navigation.PushAsync(new SegmentedControlPage());
+			if (b == GoToFormattedEntryButton)
+				await App.Navigation.PushAsync(new FormattedEntryPage());
         }
     }
 }
