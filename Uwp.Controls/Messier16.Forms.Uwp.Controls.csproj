@@ -108,6 +108,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CheckboxRenderer.cs" />
+    <Compile Include="FormattedNumberEntryRenderer.cs" />
     <Compile Include="Messier16Controls.cs" />
     <Compile Include="Native\RatingBar\RatingBar.xaml.cs">
       <DependentUpon>RatingBar.xaml</DependentUpon>
