@@ -6,10 +6,10 @@ using Xamarin.Forms.Platform.Android;
 using Android.Text;
 using Java.Text;
 
-[assembly: ExportRenderer(typeof(MaskedEntry), typeof(MaskedEntryRenderer))]
+[assembly: ExportRenderer(typeof(FormattedNumberEntry), typeof(FormattedNumberEntryRenderer))]
 namespace Messier16.Forms.Android.Controls
 {
-	public class MaskedEntryRenderer : EntryRenderer
+	public class FormattedNumberEntryRenderer : EntryRenderer
 	{
 
 		/// <summary>

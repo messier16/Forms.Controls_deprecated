@@ -6,10 +6,10 @@ using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
 
 
-[assembly: ExportRenderer(typeof(MaskedEntry), typeof(MaskedEntryRenderer))]
+[assembly: ExportRenderer(typeof(FormattedNumberEntry), typeof(FormattedNumberEntryRenderer))]
 namespace Messier16.Forms.iOS.Controls
 {
-	public class MaskedEntryRenderer : EntryRenderer
+	public class FormattedNumberEntryRenderer : EntryRenderer
 	{
 		/// <summary>
 		/// Used for registration with dependency service
