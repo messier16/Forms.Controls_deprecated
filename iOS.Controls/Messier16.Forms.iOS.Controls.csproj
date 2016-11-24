@@ -50,6 +50,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
+    <Folder Include="Native\Checkbox\Paths\" />
+    <Folder Include="Native\Checkbox\Managers\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="SegmentedControlRenderer.cs" />
@@ -63,6 +65,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RatingBarRenderer.cs" />
     <Compile Include="Messier16Controls.cs" />
+    <Compile Include="Native\Checkbox\Paths\M13CheckboxPathGenerator.cs" />
+    <Compile Include="Native\Checkbox\Paths\M13CheckboxCheckPathGenerator.cs" />
+    <Compile Include="Native\Checkbox\M13CheckboxController.cs" />
+    <Compile Include="Native\Checkbox\Managers\M13CheckboxStrokeController.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Controls\Messier16.Forms.Controls.csproj">

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using UIKit;
 
 namespace Messier16.Forms.iOS.Controls.Native.Checkbox
 {
@@ -28,10 +29,35 @@ namespace Messier16.Forms.iOS.Controls.Native.Checkbox
         Center
     }
 
-    public enum CheckboxState
-    {
-        Unchecked,
-        Checked,
-        Mixed
-    }
+	public enum BoxType
+	{
+		/// The box is a circle.
+		Circle,
+		/// The box is square with optional rounded corners.
+		Square
+	}
+
+	public enum MarkType
+	{
+		/// The mark is a standard checkmark.
+		Checkmark,
+		/// The mark is a radio style fill.
+		Radio,
+		/// The mark is an add/remove icon set.
+		AddRemove,
+		/// The mark is a disclosure indicator.
+		Disclosure
+	}
+
+	public enum CheckState
+	{
+		/// No check is shown.
+		Unchecked,
+		/// A checkmark is shown.
+		Checked,
+		/// A dash is shown.
+		Mixed
+	}
+
+		
 }
