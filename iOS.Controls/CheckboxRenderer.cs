@@ -85,10 +85,14 @@ namespace Messier16.Forms.iOS.Controls
             {
                 Control.SetEnabled(Element.IsEnabled);
             }
-            else if (e.PropertyName == nameof(Element.Checked))
-            {
-                Control.SetCheckState(Element.Checked ? CheckboxState.Checked : CheckboxState.Unchecked);
-            }
+			else if (e.PropertyName == nameof(Element.Checked))
+			{
+				Control.SetCheckState(Element.Checked ? CheckboxState.Checked : CheckboxState.Unchecked);
+			}
+			else if (e.PropertyName == nameof(Element.IsVisible))
+			{
+				Control.Hidden = !Element.IsVisible;
+			}
         }
     }
 }
