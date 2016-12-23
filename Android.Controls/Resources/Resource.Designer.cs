@@ -595,6 +595,15 @@ namespace Messier16.Forms.Android.Controls
 			// aapt resource value: 0x7f0100f9
 			public static int layout_scrollInterpolator = 2130772217;
 			
+			// aapt resource value: 0x7f01013d
+			public static int lineColor = 2130772285;
+			
+			// aapt resource value: 0x7f01013f
+			public static int lineHeightSelected = 2130772287;
+			
+			// aapt resource value: 0x7f01013e
+			public static int lineHeightUnselected = 2130772286;
+			
 			// aapt resource value: 0x7f01009b
 			public static int listChoiceBackgroundIndicator = 2130772123;
 			
@@ -792,6 +801,9 @@ namespace Messier16.Forms.Android.Controls
 			
 			// aapt resource value: 0x7f0100b7
 			public static int seekBarStyle = 2130772151;
+			
+			// aapt resource value: 0x7f01013c
+			public static int segmentedControlOptionStyle = 2130772284;
 			
 			// aapt resource value: 0x7f01007e
 			public static int selectableItemBackground = 2130772094;
@@ -1086,32 +1098,32 @@ namespace Messier16.Forms.Android.Controls
 		public partial class Color
 		{
 			
-			// aapt resource value: 0x7f0b0048
-			public static int abc_background_cache_hint_selector_material_dark = 2131427400;
+			// aapt resource value: 0x7f0b004c
+			public static int abc_background_cache_hint_selector_material_dark = 2131427404;
 			
-			// aapt resource value: 0x7f0b0049
-			public static int abc_background_cache_hint_selector_material_light = 2131427401;
+			// aapt resource value: 0x7f0b004d
+			public static int abc_background_cache_hint_selector_material_light = 2131427405;
 			
-			// aapt resource value: 0x7f0b004a
-			public static int abc_color_highlight_material = 2131427402;
+			// aapt resource value: 0x7f0b004e
+			public static int abc_color_highlight_material = 2131427406;
 			
 			// aapt resource value: 0x7f0b0004
 			public static int abc_input_method_navigation_guard = 2131427332;
 			
-			// aapt resource value: 0x7f0b004b
-			public static int abc_primary_text_disable_only_material_dark = 2131427403;
-			
-			// aapt resource value: 0x7f0b004c
-			public static int abc_primary_text_disable_only_material_light = 2131427404;
-			
-			// aapt resource value: 0x7f0b004d
-			public static int abc_primary_text_material_dark = 2131427405;
-			
-			// aapt resource value: 0x7f0b004e
-			public static int abc_primary_text_material_light = 2131427406;
-			
 			// aapt resource value: 0x7f0b004f
-			public static int abc_search_url_text = 2131427407;
+			public static int abc_primary_text_disable_only_material_dark = 2131427407;
+			
+			// aapt resource value: 0x7f0b0050
+			public static int abc_primary_text_disable_only_material_light = 2131427408;
+			
+			// aapt resource value: 0x7f0b0051
+			public static int abc_primary_text_material_dark = 2131427409;
+			
+			// aapt resource value: 0x7f0b0052
+			public static int abc_primary_text_material_light = 2131427410;
+			
+			// aapt resource value: 0x7f0b0053
+			public static int abc_search_url_text = 2131427411;
 			
 			// aapt resource value: 0x7f0b0005
 			public static int abc_search_url_text_normal = 2131427333;
@@ -1122,11 +1134,11 @@ namespace Messier16.Forms.Android.Controls
 			// aapt resource value: 0x7f0b0007
 			public static int abc_search_url_text_selected = 2131427335;
 			
-			// aapt resource value: 0x7f0b0050
-			public static int abc_secondary_text_material_dark = 2131427408;
+			// aapt resource value: 0x7f0b0054
+			public static int abc_secondary_text_material_dark = 2131427412;
 			
-			// aapt resource value: 0x7f0b0051
-			public static int abc_secondary_text_material_light = 2131427409;
+			// aapt resource value: 0x7f0b0055
+			public static int abc_secondary_text_material_light = 2131427413;
 			
 			// aapt resource value: 0x7f0b0008
 			public static int accent_material_dark = 2131427336;
@@ -1230,6 +1242,9 @@ namespace Messier16.Forms.Android.Controls
 			// aapt resource value: 0x7f0b001b
 			public static int foreground_material_light = 2131427355;
 			
+			// aapt resource value: 0x7f0b004a
+			public static int highlight = 2131427402;
+			
 			// aapt resource value: 0x7f0b001c
 			public static int highlighted_text_material_dark = 2131427356;
 			
@@ -1241,6 +1256,9 @@ namespace Messier16.Forms.Android.Controls
 			
 			// aapt resource value: 0x7f0b001f
 			public static int hint_foreground_material_light = 2131427359;
+			
+			// aapt resource value: 0x7f0b0049
+			public static int light = 2131427401;
 			
 			// aapt resource value: 0x7f0b0020
 			public static int material_blue_grey_800 = 2131427360;
@@ -1277,6 +1295,9 @@ namespace Messier16.Forms.Android.Controls
 			
 			// aapt resource value: 0x7f0b002b
 			public static int material_grey_900 = 2131427371;
+			
+			// aapt resource value: 0x7f0b0048
+			public static int normal = 2131427400;
 			
 			// aapt resource value: 0x7f0b002c
 			public static int primary_dark_material_dark = 2131427372;
@@ -1320,17 +1341,23 @@ namespace Messier16.Forms.Android.Controls
 			// aapt resource value: 0x7f0b0039
 			public static int secondary_text_disabled_material_light = 2131427385;
 			
+			// aapt resource value: 0x7f0b0056
+			public static int segmented_control_text = 2131427414;
+			
+			// aapt resource value: 0x7f0b004b
+			public static int selected = 2131427403;
+			
 			// aapt resource value: 0x7f0b003a
 			public static int switch_thumb_disabled_material_dark = 2131427386;
 			
 			// aapt resource value: 0x7f0b003b
 			public static int switch_thumb_disabled_material_light = 2131427387;
 			
-			// aapt resource value: 0x7f0b0052
-			public static int switch_thumb_material_dark = 2131427410;
+			// aapt resource value: 0x7f0b0057
+			public static int switch_thumb_material_dark = 2131427415;
 			
-			// aapt resource value: 0x7f0b0053
-			public static int switch_thumb_material_light = 2131427411;
+			// aapt resource value: 0x7f0b0058
+			public static int switch_thumb_material_light = 2131427416;
 			
 			// aapt resource value: 0x7f0b003c
 			public static int switch_thumb_normal_material_dark = 2131427388;
@@ -1698,6 +1725,12 @@ namespace Messier16.Forms.Android.Controls
 			
 			// aapt resource value: 0x7f060056
 			public static int notification_subtext_size = 2131099734;
+			
+			// aapt resource value: 0x7f060074
+			public static int segmented_control_default_height = 2131099764;
+			
+			// aapt resource value: 0x7f060075
+			public static int segmented_control_text_size = 2131099765;
 			
 			static Dimension()
 			{
@@ -2192,8 +2225,17 @@ namespace Messier16.Forms.Android.Controls
 			// aapt resource value: 0x7f02009f
 			public static int mr_ic_play_light = 2130837663;
 			
+			// aapt resource value: 0x7f0200a3
+			public static int notification_template_icon_bg = 2130837667;
+			
 			// aapt resource value: 0x7f0200a0
-			public static int notification_template_icon_bg = 2130837664;
+			public static int segmented_control_background = 2130837664;
+			
+			// aapt resource value: 0x7f0200a1
+			public static int segmented_control_first_background = 2130837665;
+			
+			// aapt resource value: 0x7f0200a2
+			public static int segmented_control_last_background = 2130837666;
 			
 			static Drawable()
 			{
@@ -2893,16 +2935,19 @@ namespace Messier16.Forms.Android.Controls
 			public static int notification_template_part_time = 2130903090;
 			
 			// aapt resource value: 0x7f030033
-			public static int select_dialog_item_material = 2130903091;
+			public static int SegmentedControl = 2130903091;
 			
 			// aapt resource value: 0x7f030034
-			public static int select_dialog_multichoice_material = 2130903092;
+			public static int select_dialog_item_material = 2130903092;
 			
 			// aapt resource value: 0x7f030035
-			public static int select_dialog_singlechoice_material = 2130903093;
+			public static int select_dialog_multichoice_material = 2130903093;
 			
 			// aapt resource value: 0x7f030036
-			public static int support_simple_spinner_dropdown_item = 2130903094;
+			public static int select_dialog_singlechoice_material = 2130903094;
+			
+			// aapt resource value: 0x7f030037
+			public static int support_simple_spinner_dropdown_item = 2130903095;
 			
 			static Layout()
 			{
@@ -3577,6 +3622,9 @@ namespace Messier16.Forms.Android.Controls
 			
 			// aapt resource value: 0x7f0a0050
 			public static int RtlUnderlay_Widget_AppCompat_ActionButton_Overflow = 2131361872;
+			
+			// aapt resource value: 0x7f0a0172
+			public static int SegmentedControlOption = 2131362162;
 			
 			// aapt resource value: 0x7f0a00d1
 			public static int TextAppearance_AppCompat = 2131362001;
@@ -5504,6 +5552,24 @@ namespace Messier16.Forms.Android.Controls
 			
 			// aapt resource value: 12
 			public static int SearchView_voiceIcon = 12;
+			
+			public static int[] SegmentedControlOption = new int[] {
+					2130772284,
+					2130772285,
+					2130772286,
+					2130772287};
+			
+			// aapt resource value: 1
+			public static int SegmentedControlOption_lineColor = 1;
+			
+			// aapt resource value: 3
+			public static int SegmentedControlOption_lineHeightSelected = 3;
+			
+			// aapt resource value: 2
+			public static int SegmentedControlOption_lineHeightUnselected = 2;
+			
+			// aapt resource value: 0
+			public static int SegmentedControlOption_segmentedControlOptionStyle = 0;
 			
 			public static int[] SnackbarLayout = new int[] {
 					16843039,

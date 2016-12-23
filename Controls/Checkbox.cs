@@ -10,7 +10,11 @@ namespace Messier16.Forms.Controls
     public class Checkbox : View
     {
         public static readonly BindableProperty CheckedProperty =
-                BindableProperty.Create(nameof(Checked), typeof(bool), typeof(Checkbox), false, BindingMode.TwoWay);
+                BindableProperty.Create(nameof(Checked), typeof(bool), typeof(Checkbox), false, BindingMode.TwoWay,
+                    propertyChanged: (bindable, oldValue, newValue) => 
+                    {
+                        ((Checkbox)bindable).CheckedChanged?.Invoke(bindable, new CheckedChangedEventArgs((bool)newValue));
+                    });
 
 
         public static readonly BindableProperty TickColorProperty =
@@ -35,6 +39,17 @@ namespace Messier16.Forms.Controls
         {
             get { return (bool)GetValue(CheckedProperty); }
             set { if (Checked != value) SetValue(CheckedProperty, value); }
+        }
+
+        public EventHandler<CheckedChangedEventArgs> CheckedChanged;
+    }
+
+    public class CheckedChangedEventArgs : EventArgs
+    {
+        public bool Checked { get; private set; }
+        public CheckedChangedEventArgs(bool value)
+        {
+            Checked = value;
         }
     }
 }
