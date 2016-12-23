@@ -9,15 +9,29 @@ namespace TestApp.Pages.CheckboxPages
     {
         public CheckboxCodePage()
         {
-            var cb1 = new Checkbox() { WidthRequest = 55 };
-            var cb2 = new Checkbox() { WidthRequest = 45, IsEnabled =  cb1.Checked };
+            var cb1 = new Checkbox() { TickColor = Color.Blue, WidthRequest = 55, HeightRequest = 55 };
+            var cb2 = new Checkbox()
+            {
+                CheckboxBackgroundColor = Color.FromHex("5480BE"),
+                TickColor = Color.FromHex("73A6DA"),
+                WidthRequest = 45,
+                IsEnabled = cb1.Checked
+            };
             var cb3 = new Checkbox() { WidthRequest = 35, Checked = true };
-            var cb4 = new Checkbox() { IsVisible = cb2.Checked };
+            var cb4 = new Checkbox()
+            {
+#if DEBUG
+                AutomationId = "cb4",
+                #endif
+                TickColor = Color.Blue,
+                CheckboxBackgroundColor = Color.Maroon,
+                IsVisible = cb2.Checked
+            };
 
-            cb1.PropertyChanged += 
+            cb1.PropertyChanged +=
                 (sender, e) =>
-                { 
-                    if(e.PropertyName.Equals("Checked"))
+                {
+                    if (e.PropertyName.Equals("Checked"))
                     {
                         cb2.IsEnabled = cb1.Checked;
                         cb3.Checked = !cb1.Checked;
@@ -35,12 +49,12 @@ namespace TestApp.Pages.CheckboxPages
 
             var grid = new Grid
             {
-                    RowDefinitions =  
+                RowDefinitions =
                     {
                             new RowDefinition { Height = new GridLength(1, GridUnitType.Auto) },
                             new RowDefinition { Height = new GridLength(1, GridUnitType.Auto) }
                     },
-                    ColumnDefinitions = 
+                ColumnDefinitions =
                     {
                             new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star)},
                             new ColumnDefinition { Width = new GridLength(4, GridUnitType.Star)},
@@ -48,19 +62,20 @@ namespace TestApp.Pages.CheckboxPages
             };
 
             var toggableCheck = new Checkbox() { WidthRequest = 45 };
-            var buttonToggle = new Button{Text="Toggle check"};
+            var buttonToggle = new Button { Text = "Toggle check" };
 
             buttonToggle.Clicked += (sender, e) => { toggableCheck.Checked = !toggableCheck.Checked; };
 
             var otherCheck = new Checkbox() { WidthRequest = 55 };
-            var otherCheckLabel = new Label { 
-                Text= otherCheck.Checked ? "Checked" : "Unchecked", 
-                VerticalOptions= LayoutOptions.CenterAndExpand
+            var otherCheckLabel = new Label
+            {
+                Text = otherCheck.Checked ? "Checked" : "Unchecked",
+                VerticalOptions = LayoutOptions.CenterAndExpand
             };
 
-            otherCheck.PropertyChanged += (sender, e) => 
-            { 
-                otherCheckLabel.Text= otherCheck.Checked ? "Checked" : "Unchecked";
+            otherCheck.PropertyChanged += (sender, e) =>
+            {
+                otherCheckLabel.Text = otherCheck.Checked ? "Checked" : "Unchecked";
             };
 
             grid.Children.Add(toggableCheck, 0, 0);
@@ -83,11 +98,11 @@ namespace TestApp.Pages.CheckboxPages
             };
 
             Content = new StackLayout
-            { 
+            {
                 Children =
                 {
                     checkboxes,
-                    grid
+                    //grid
                 }
             };
         }

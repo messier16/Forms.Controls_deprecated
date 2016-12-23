@@ -53,6 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Native\Checkbox\Checkbox.cs" />
+    <Compile Include="Native\UIColorExtensions.cs" />
     <Compile Include="SegmentedControlRenderer.cs" />
     <Compile Include="CheckboxRenderer.cs" />
     <Compile Include="GenericEventArgs.cs" />

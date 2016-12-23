@@ -29,19 +29,22 @@ namespace Messier16.Forms.iOS.Controls
         /// <param name="e">The e.</param>
         protected override void OnElementChanged(ElementChangedEventArgs<FormsCheckbox> e)
         {
-            if (e.OldElement != null || Element == null) return;
+
+            base.OnElementChanged(e);
+
 
             if (Control == null)
             {
                 // Instantiate the native control and assign it to the Control property
-                var width = 40d;
-                if (Element.WidthRequest >= 0)
+                var width = FormsCheckbox.DefaultSize;
+                if (Element.WidthRequest > 0)
                 {
                     width = Element.WidthRequest;
                 }
-                var checkBox = new Native.Checkbox.Checkbox(new CGRect(0, 0, width, width))
+
+                System.Diagnostics.Debug.WriteLine($"{Element.AutomationId}: {width}");
+                var checkBox = new Checkbox(new CGRect(0, 0, width, width))
                 {
-                    //Bounds = new CGRect(0, 0, width, width)
                 };
                 SetNativeControl(checkBox);
             }
@@ -54,22 +57,34 @@ namespace Messier16.Forms.iOS.Controls
 
             if (e.NewElement != null)
             {
+                var element = e.NewElement;
+
                 // Configure the control and subscribe to event handlers
                 Control.CheckedChanged += Control_CheckedChanged;
 
-                Control.Enabled = e.NewElement.IsEnabled;
-                Control.Checked = e.NewElement.Checked;
-                if (e.NewElement.CheckboxBackgroundColor != Color.Default)
-                    Control.CheckboxBackgroundColor = e.NewElement.CheckboxBackgroundColor.ToUIColor();
+                Control.Enabled = element.IsEnabled;
+                //Control.Hidden = !element.IsVisible;
+                Control.Checked = element.Checked;
+                if (element.CheckboxBackgroundColor != Color.Default)
+                    Control.CheckboxBackgroundColor = element.CheckboxBackgroundColor.ToUIColor();
 
-                if (e.NewElement.TickColor != Color.Default)
-                    Control.TickColor = e.NewElement.TickColor.ToUIColor();
+                if (element.TickColor != Color.Default)
+                    Control.TickColor = element.TickColor.ToUIColor();
+            }
+            else
+            {
+                System.Diagnostics.Debug.WriteLine("NewElement is null");
             }
 
-            base.OnElementChanged(e);
         }
 
+        protected override void Dispose(bool disposing)
+        {
+            if (Control != null)
+                Control.CheckedChanged -= Control_CheckedChanged;
+            base.Dispose(disposing);
 
+        }
 
 
         private void Control_CheckedChanged(object sender, CheckedChangedEventArgs e)
@@ -93,23 +108,18 @@ namespace Messier16.Forms.iOS.Controls
             {
                 Control.TickColor = Element.TickColor.ToUIColor();
             }
-            else if (e.PropertyName == nameof(Element.BackgroundColor))
+            else if (e.PropertyName == nameof(Element.CheckboxBackgroundColor))
             {
-                Control.CheckboxBackgroundColor = Element.BackgroundColor.ToUIColor();
+                Control.CheckboxBackgroundColor = Element.CheckboxBackgroundColor.ToUIColor();
             }
-            else if (e.PropertyName == nameof(Element.IsVisible))
-            {
-                Control.Hidden = !Element.IsVisible;
-                Control.SetNeedsDisplay();
-            }
+            //else if (e.PropertyName == nameof(Element.IsVisible))
+            //{
+            //    Control.Hidden = !Element.IsVisible;
+            //}
             else
             {
                 base.OnElementPropertyChanged(sender, e);
             }
-            //else if (e.PropertyName == nameof(Element.IsVisible))
-            //{
-            //	Control.Hidden = !Element.IsVisible;
-            //}
         }
     }
 }

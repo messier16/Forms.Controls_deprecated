@@ -26,7 +26,7 @@ namespace TestApp
 			ToolbarItem reload = new ToolbarItem() { Text = "Reload" };
 			reload.Clicked += (sender, e) => { 
 				controls.Clear();
-				var c = GetControls(15);
+				var c = GetControls(30);
 				foreach (var item in c)
 				{
 					controls.Add(item);
@@ -42,7 +42,7 @@ namespace TestApp
 			var template = new DataTemplate(typeof( ControlCell<Checkbox> ));
 			list.ItemTemplate = template;
 
-			controls = new ObservableCollection<ControlWrapper>( GetControls(15));
+			controls = new ObservableCollection<ControlWrapper>( GetControls(30));
 			list.ItemsSource = controls;
 			list.ItemSelected += (sender, e) => {
 

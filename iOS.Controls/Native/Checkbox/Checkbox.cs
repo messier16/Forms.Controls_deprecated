@@ -25,10 +25,29 @@ namespace Messier16.Forms.iOS.Controls.Native.Checkbox
         void Initialize()
         {
             base.BackgroundColor = UIColor.Clear;
-            TouchUpInside += (sender, e) =>
-            {
+
+
+        }
+
+        bool _touching = false;
+
+        public override void TouchesBegan(NSSet touches, UIEvent evt)
+        {
+            if (Enabled)
+                _touching = true;
+            else
+                _touching = false;
+        }
+        public override void TouchesEnded(NSSet touches, UIEvent evt)
+        {
+            if (_touching && Enabled)
                 Checked = !Checked;
-            };
+            _touching = false;
+        }
+
+        public override void TouchesCancelled(NSSet touches, UIEvent evt)
+        {
+            _touching = false;
         }
 
         public event CheckedChangedEventHandler CheckedChanged;
@@ -42,7 +61,6 @@ namespace Messier16.Forms.iOS.Controls.Native.Checkbox
             {
                 if (value != _checked)
                 {
-
                     _checked = value;
                     CheckedChanged?.Invoke(this, new CheckedChangedEventArgs(value));
                     SetNeedsDisplay();
@@ -66,14 +84,31 @@ namespace Messier16.Forms.iOS.Controls.Native.Checkbox
             set { _checkboxBackgroundColor = value; SetNeedsDisplay(); }
         }
 
+        //bool _enabled = false;
+        //[Export("Enabled"), Browsable(true)]
+        //public bool Enabled
+        //{
+        //    get { return _enabled; }
+        //    set { _enabled = value; SetNeedsDisplay(); }
+        //}
+        
+        //[Export("Hidden"), Browsable(true)]
+        //public new bool Hidden
+        //{
+        //    get { return base.Hidden; }
+        //    set { base.Hidden = value; SetNeedsDisplay(); }
+        //}
 
         public override void Draw(CoreGraphics.CGRect rect)
         {
+            //if(!Hidden)
             DrawCheck(Frame);
         }
 
         private void DrawCheck(CGRect frame)
         {
+            var bgColor = Enabled ? CheckboxBackgroundColor : CheckboxBackgroundColor.Lighter(20);
+            var tickColor = Enabled ? TickColor : TickColor.Lighter(20);
             var size = Math.Min(frame.Width, frame.Height);
             var radius = (float)(size * 0.1);
             frame = new CGRect(frame.Location, new CGSize(size, size));
@@ -81,7 +116,7 @@ namespace Messier16.Forms.iOS.Controls.Native.Checkbox
 
             //// Outer Drawing
             var outerPath = UIBezierPath.FromRoundedRect(new CGRect(frame.GetMinX() + NMath.Floor(frame.Width * 0.05000f) + 0.5f, frame.GetMinY() + NMath.Floor(frame.Height * 0.05000f) + 0.5f, NMath.Floor(frame.Width * 0.95000f) - NMath.Floor(frame.Width * 0.05000f), NMath.Floor(frame.Height * 0.95000f) - NMath.Floor(frame.Height * 0.05000f)), radius);
-            CheckboxBackgroundColor.SetFill();
+            bgColor.SetFill();
             outerPath.Fill();
 
             if (Checked)
@@ -98,7 +133,7 @@ namespace Messier16.Forms.iOS.Controls.Native.Checkbox
                 checkPath.AddLineTo(new CGPoint(frame.GetMinX() + 0.81437f * frame.Width, frame.GetMinY() + 0.31127f * frame.Height));
                 checkPath.AddLineTo(new CGPoint(frame.GetMinX() + 0.76208f * frame.Width, frame.GetMinY() + 0.26000f * frame.Height));
                 checkPath.ClosePath();
-                TickColor.SetFill();
+                tickColor.SetFill();
                 checkPath.Fill();
 
             }
