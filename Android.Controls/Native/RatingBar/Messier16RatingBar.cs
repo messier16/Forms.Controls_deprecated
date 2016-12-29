@@ -19,7 +19,6 @@ namespace Messier16.Forms.Android.Controls.Native.RatingBar
     {
 
         private int _maxStar = 5;
-
         public int MaxStars
         {
             get { return _maxStar; }
@@ -27,7 +26,6 @@ namespace Messier16.Forms.Android.Controls.Native.RatingBar
         }
 
         private float _padding = 2;
-
         public float Padding
         {
             get { return _padding; }
@@ -36,43 +34,60 @@ namespace Messier16.Forms.Android.Controls.Native.RatingBar
 
         public Messier16RatingBar(Context context, IAttributeSet attrs) : base(context, attrs)
         {
-            InitLabelView();
+            InitRatingBar();
         }
 
         public Messier16RatingBar(Context context) : base(context)
         {
-            InitLabelView();
+            InitRatingBar();
         }
 
 
         private Paint fillPaint;
-        private String mText;
-        private int mAscent;
+        private Paint strokePaint;
 
 
-        private void InitLabelView()
+        private void InitRatingBar()
         {
-            mText = "Hpla";
             fillPaint = new Paint();
-            fillPaint.AntiAlias = true;
-            fillPaint.TextSize = 16;
             fillPaint.Color = new Color(0, 0, 0);
+
+            strokePaint = new Paint();
+            strokePaint.StrokeWidth = 2;
+            strokePaint.Color = new Color(30, 30, 30);
+            strokePaint.SetStyle(Paint.Style.Stroke);
             SetPadding(3, 3, 3, 3);
         }
 
+        public Color _fillColor;
         public Color FillColor
         {
-            get { return fillPaint.Color; }
+            get { return _fillColor; }
             set
             {
-                fillPaint.Color = value;
+                _fillColor = value;
+                if (fillPaint != null)
+                    fillPaint.Color = value;
+                Invalidate();
+            }
+        }
+
+        public Color _strokeColor;
+        public Color StrokeColor
+        {
+            get { return _strokeColor; }
+            set
+            {
+                _strokeColor = value;
+                if (strokePaint != null)
+                    strokePaint.Color = value;
                 Invalidate();
             }
         }
 
         protected override void OnMeasure(int widthMeasureSpec, int heightMeasureSpec)
         {
-            SetMeasuredDimension(MeasureWidth(widthMeasureSpec),MeasureHeight(heightMeasureSpec));
+            SetMeasuredDimension(MeasureWidth(widthMeasureSpec), MeasureHeight(heightMeasureSpec));
         }
 
         private int MeasureWidth(int measureSpec)
@@ -83,20 +98,8 @@ namespace Messier16.Forms.Android.Controls.Native.RatingBar
 
             if (specMode == MeasureSpecMode.Exactly)
             {
-                // We were told how big to be
                 result = specSize;
             }
-            else
-            {
-                //// Measure the text
-                //result = (int)mTextPaint.MeasureText(mText) + PaddingLeft
-                //        + PaddingRight;
-                //if (specMode == MeasureSpecMode.AtMost)
-                //{
-                //    result = Math.Min(result, specSize);
-                //}
-            }
-
             return result;
         }
 
@@ -105,23 +108,10 @@ namespace Messier16.Forms.Android.Controls.Native.RatingBar
             int result = 0;
             var specMode = MeasureSpec.GetMode(measureSpec);
             int specSize = MeasureSpec.GetSize(measureSpec);
-
-            mAscent = (int)fillPaint.Ascent();
+            
             if (specMode == MeasureSpecMode.Exactly)
             {
-                // We were told how big to be
                 result = specSize;
-            }
-            else
-            {
-                // Measure the text (beware: ascent is a negative number)
-                result = (int)(-mAscent + fillPaint.Descent()) + PaddingTop
-                        + PaddingBottom;
-                if (specMode == MeasureSpecMode.AtMost)
-                {
-                    // Respect AT_MOST value if that was what is called for by measureSpec
-                    result = Math.Min(result, specSize);
-                }
             }
             return result;
         }
@@ -137,7 +127,6 @@ namespace Messier16.Forms.Android.Controls.Native.RatingBar
 
             var starCenter = starSizeWidth / (float)2;
 
-            //System.Diagnostics.Debug.WriteLine($"Star size {trueStarSize} W:{starSizeWidth} H:{starSizeHeight}");
             var rating = Rating;
             System.Diagnostics.Debug.Write($"{Rating}");
             for (int i = 0; i < MaxStars; i++)
@@ -146,7 +135,10 @@ namespace Messier16.Forms.Android.Controls.Native.RatingBar
                 var left = middle - trueStarSize / 2;
 
                 var boundingBox = new RectF(left + Padding, 0, left + trueStarSize - Padding, trueStarSize - Padding);
-                canvas.DrawRoundRect(boundingBox, 10, 10, fillPaint);
+                canvas.Save();
+                var starPath = StarPath(canvas, boundingBox);
+                canvas.DrawPath(starPath, strokePaint);
+                canvas.ClipPath(starPath);
 
                 RectF fillBox = null;
                 if ((i + 1) < Rating)
@@ -158,8 +150,28 @@ namespace Messier16.Forms.Android.Controls.Native.RatingBar
                     fillBox = new RectF(left, 0, left + trueStarSize * (Rating - i), trueStarSize);
                 }
                 if (fillBox != null)
-                    canvas.DrawRoundRect(fillBox, 30, 30, new Paint() { Color = Color.Red });
+                    canvas.DrawRect(fillBox, new Paint() { Color = Color.Red });
+                canvas.Restore();
             }
+        }
+
+        Path StarPath(Canvas canvas, RectF frame)
+        {
+
+            Path bezierPath = new Path();
+            bezierPath.MoveTo(frame.Left + frame.Width(), frame.Top + frame.Height() * 0.39964f);
+            bezierPath.LineTo(frame.Left + frame.Width() * 0.65f, frame.Top + frame.Height() * 0.34969f);
+            bezierPath.LineTo(frame.Left + frame.Width() * 0.5f, frame.Top);
+            bezierPath.LineTo(frame.Left + frame.Width() * 0.35f, frame.Top + frame.Height() * 0.34969f);
+            bezierPath.LineTo(frame.Left, frame.Top + frame.Height() * 0.39964f);
+            bezierPath.LineTo(frame.Left + frame.Width() * 0.25f, frame.Top + frame.Height() * 0.64942f);
+            bezierPath.LineTo(frame.Left + frame.Width() * 0.2f, frame.Top + frame.Height());
+            bezierPath.LineTo(frame.Left + frame.Width() * 0.5f, frame.Top + frame.Height() * 0.84924f);
+            bezierPath.LineTo(frame.Left + frame.Width() * 0.8f, frame.Top + frame.Height() * 0.9991f);
+            bezierPath.LineTo(frame.Left + frame.Width() * 0.75f, frame.Top + frame.Height() * 0.64942f);
+            bezierPath.LineTo(frame.Left + frame.Width(), frame.Top + frame.Height() * 0.39964f);
+            bezierPath.Close();
+            return bezierPath;
         }
 
         private const float TOUCH_SCALE_FACTOR = 180.0f / 320;

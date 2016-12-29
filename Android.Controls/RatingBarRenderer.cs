@@ -47,7 +47,8 @@ namespace Messier16.Forms.Android.Controls
                     //StepSize = 1.0f,
                     //Max = Element.MaxRating,
                     MaxStars = Element.MaxRating,
-                    //Rating = Element.Rating,
+                    FillColor = global::Android.Graphics.Color.Blue,
+                    StrokeColor = global::Android.Graphics.Color.GreenYellow
                 };
 
                 // http://stackoverflow.com/questions/3858600/how-to-make-ratingbar-to-show-five-stars#comment4151898_3859248
