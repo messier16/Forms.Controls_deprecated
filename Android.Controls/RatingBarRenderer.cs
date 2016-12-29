@@ -13,14 +13,14 @@ using Android.Widget;
 using Messier16.Forms.Android.Controls;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
-using NativeRatingBar = Android.Widget.RatingBar;
+
 using RatingBar = Messier16.Forms.Controls.RatingBar;
-using Messier16.Forms.Android.Controls.Native;
+using Messier16.Forms.Android.Controls.Native.RatingBar;
 
 [assembly: ExportRenderer(typeof(RatingBar), typeof(RatingBarRenderer))]
 namespace Messier16.Forms.Android.Controls
 {
-    public class RatingBarRenderer : ViewRenderer<RatingBar, LabelView>
+    public class RatingBarRenderer : ViewRenderer<RatingBar, Messier16RatingBar>
     {
         /// <summary>
         /// Used for registration with dependency service
@@ -41,14 +41,14 @@ namespace Messier16.Forms.Android.Controls
                 var layout = new LinearLayout(Context);
 
                 // Instantiate the native control and assign it to the Control property
-                var ratingBar = new LabelView(Context);
-                //{
-                //    IsIndicator = !Element.IsEnabled,
-                //    StepSize = 1.0f,
-                //    Max = Element.MaxRating,
-                //    NumStars = Element.MaxRating,
-                //    Rating = Element.Rating,
-                //};
+                var ratingBar = new Messier16RatingBar(Context)
+                {
+                    //IsIndicator = !Element.IsEnabled,
+                    //StepSize = 1.0f,
+                    //Max = Element.MaxRating,
+                    MaxStars = Element.MaxRating,
+                    //Rating = Element.Rating,
+                };
 
                 // http://stackoverflow.com/questions/3858600/how-to-make-ratingbar-to-show-five-stars#comment4151898_3859248
                 ratingBar.LayoutParameters = new LayoutParams(LayoutParams.WrapContent,LayoutParams.MatchParent);
@@ -87,9 +87,9 @@ namespace Messier16.Forms.Android.Controls
         //    }
         //}
 
-        private void Control_RatingBarChange(object sender, NativeRatingBar.RatingBarChangeEventArgs e)
-        {
-            Element.Rating = (int)e.Rating;
-        }
+        //private void Control_RatingBarChange(object sender, NativeRatingBar.RatingBarChangeEventArgs e)
+        //{
+        //    Element.Rating = (int)e.Rating;
+        //}
     }
 }

@@ -12,23 +12,40 @@ using Android.Widget;
 using Android.Util;
 using Android.Graphics;
 
-namespace Messier16.Forms.Android.Controls.Native
+namespace Messier16.Forms.Android.Controls.Native.RatingBar
 {
 
-    public class LabelView : View
+    public class Messier16RatingBar : View
     {
-        public LabelView(Context context, IAttributeSet attrs) : base(context, attrs)
+
+        private int _maxStar = 5;
+
+        public int MaxStars
+        {
+            get { return _maxStar; }
+            set { _maxStar = value; }
+        }
+
+        private float _padding = 2;
+
+        public float Padding
+        {
+            get { return _padding; }
+            set { _padding = value; }
+        }
+
+        public Messier16RatingBar(Context context, IAttributeSet attrs) : base(context, attrs)
         {
             InitLabelView();
         }
 
-        public LabelView(Context context) : base(context)
+        public Messier16RatingBar(Context context) : base(context)
         {
             InitLabelView();
         }
 
 
-        private Paint mTextPaint;
+        private Paint fillPaint;
         private String mText;
         private int mAscent;
 
@@ -36,55 +53,26 @@ namespace Messier16.Forms.Android.Controls.Native
         private void InitLabelView()
         {
             mText = "Hpla";
-            mTextPaint = new Paint();
-            mTextPaint.AntiAlias = true;
-            mTextPaint.TextSize = 16;
-            mTextPaint.Color = new Color(0, 0, 0);
+            fillPaint = new Paint();
+            fillPaint.AntiAlias = true;
+            fillPaint.TextSize = 16;
+            fillPaint.Color = new Color(0, 0, 0);
             SetPadding(3, 3, 3, 3);
         }
 
-
-        private string _text;
-
-        public string Text
+        public Color FillColor
         {
-            get { return _text; }
+            get { return fillPaint.Color; }
             set
             {
-                _text = value;
-                RequestLayout();
-                Invalidate();
-            }
-        }
-
-        public float TextSize
-        {
-            get { return mTextPaint.TextSize; }
-            set
-            {
-                mTextPaint.TextSize = value;
-                RequestLayout();
-                Invalidate();
-            }
-        }
-
-        public Color TextColor
-        {
-            get { return mTextPaint.Color; }
-            set
-            {
-                mTextPaint.Color = value;
+                fillPaint.Color = value;
                 Invalidate();
             }
         }
 
         protected override void OnMeasure(int widthMeasureSpec, int heightMeasureSpec)
         {
-
-            SetMeasuredDimension(
-                MeasureWidth(widthMeasureSpec),
-                MeasureHeight(heightMeasureSpec)
-                );
+            SetMeasuredDimension(MeasureWidth(widthMeasureSpec),MeasureHeight(heightMeasureSpec));
         }
 
         private int MeasureWidth(int measureSpec)
@@ -100,14 +88,13 @@ namespace Messier16.Forms.Android.Controls.Native
             }
             else
             {
-                // Measure the text
-                result = (int)mTextPaint.MeasureText(mText) + PaddingLeft
-                        + PaddingRight;
-                if (specMode == MeasureSpecMode.AtMost)
-                {
-                    // Respect AT_MOST value if that was what is called for by measureSpec
-                    result = Math.Min(result, specSize);
-                }
+                //// Measure the text
+                //result = (int)mTextPaint.MeasureText(mText) + PaddingLeft
+                //        + PaddingRight;
+                //if (specMode == MeasureSpecMode.AtMost)
+                //{
+                //    result = Math.Min(result, specSize);
+                //}
             }
 
             return result;
@@ -119,7 +106,7 @@ namespace Messier16.Forms.Android.Controls.Native
             var specMode = MeasureSpec.GetMode(measureSpec);
             int specSize = MeasureSpec.GetSize(measureSpec);
 
-            mAscent = (int)mTextPaint.Ascent();
+            mAscent = (int)fillPaint.Ascent();
             if (specMode == MeasureSpecMode.Exactly)
             {
                 // We were told how big to be
@@ -128,7 +115,7 @@ namespace Messier16.Forms.Android.Controls.Native
             else
             {
                 // Measure the text (beware: ascent is a negative number)
-                result = (int)(-mAscent + mTextPaint.Descent()) + PaddingTop
+                result = (int)(-mAscent + fillPaint.Descent()) + PaddingTop
                         + PaddingBottom;
                 if (specMode == MeasureSpecMode.AtMost)
                 {
@@ -142,20 +129,64 @@ namespace Messier16.Forms.Android.Controls.Native
         protected override void OnDraw(Canvas canvas)
         {
             base.OnDraw(canvas);
-            canvas.DrawText(mText, PaddingLeft, PaddingTop - mAscent, mTextPaint);
+
+            float starSizeWidth = canvas.Width / MaxStars;
+            float starSizeHeight = canvas.Height;
+
+            var trueStarSize = Math.Min(starSizeHeight, starSizeWidth);
+
+            var starCenter = starSizeWidth / (float)2;
+
+            //System.Diagnostics.Debug.WriteLine($"Star size {trueStarSize} W:{starSizeWidth} H:{starSizeHeight}");
+            var rating = Rating;
+            System.Diagnostics.Debug.Write($"{Rating}");
+            for (int i = 0; i < MaxStars; i++)
+            {
+                var middle = starSizeWidth * i + starSizeWidth / 2;
+                var left = middle - trueStarSize / 2;
+
+                var boundingBox = new RectF(left + Padding, 0, left + trueStarSize - Padding, trueStarSize - Padding);
+                canvas.DrawRoundRect(boundingBox, 10, 10, fillPaint);
+
+                RectF fillBox = null;
+                if ((i + 1) < Rating)
+                {
+                    fillBox = new RectF(left, 0, left + trueStarSize, trueStarSize);
+                }
+                else if (0 < Rating - i)
+                {
+                    fillBox = new RectF(left, 0, left + trueStarSize * (Rating - i), trueStarSize);
+                }
+                if (fillBox != null)
+                    canvas.DrawRoundRect(fillBox, 30, 30, new Paint() { Color = Color.Red });
+            }
         }
 
-        /**
-         * Render the text
-         * 
-         * @see android.view.View#onDraw(android.graphics.Canvas)
-         * /
-        @Override
-        protected void onDraw(Canvas canvas)
+        private const float TOUCH_SCALE_FACTOR = 180.0f / 320;
+        public override bool OnTouchEvent(MotionEvent e)
         {
-            super.onDraw(canvas);
-            canvas.drawText(mText, getPaddingLeft(), getPaddingTop() - mAscent, mTextPaint);
+            float x = e.GetX();
+            float y = e.GetY();
+            switch (e.Action)
+            {
+                case MotionEventActions.Down:
+                    CalculateNewRating(x);
+                    break;
+                case MotionEventActions.Move:
+                    CalculateNewRating(x);
+                    break;
+                default:
+                    break;
+            }
+            return true;
         }
-         */
+
+        float Rating;
+        void CalculateNewRating(float movement)
+        {
+            Rating = MaxStars * (movement / Width);
+
+            Invalidate();
+        }
     }
 }
