@@ -41,7 +41,6 @@ namespace Messier16.Forms.iOS.Controls
             if (e.NewElement != null)
             {
                 if (Control == null)
-					
                 {
                     // Instantiate the native control and assign it to the Control property
                     var width = 140d;

@@ -12,8 +12,8 @@ namespace TestApp
 
         public App()
         {
-            MainPage = new NavigationPage(new HomePage());
-            Navigation = (MainPage as NavigationPage).Navigation;
+            MainPage = new RatingBarPage();//  new NavigationPage(new HomePage());
+            //Navigation = (MainPage as NavigationPage).Navigation;
         }
 
         public static INavigation Navigation { get; private set;}

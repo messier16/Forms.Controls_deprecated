@@ -54,6 +54,7 @@ namespace Messier16.Forms.Android.Controls.Native.RatingBar
 
             strokePaint = new Paint();
             strokePaint.StrokeWidth = 2;
+            strokePaint.AntiAlias = true;
             strokePaint.Color = new Color(30, 30, 30);
             strokePaint.SetStyle(Paint.Style.Stroke);
             SetPadding(3, 3, 3, 3);
@@ -108,7 +109,7 @@ namespace Messier16.Forms.Android.Controls.Native.RatingBar
             int result = 0;
             var specMode = MeasureSpec.GetMode(measureSpec);
             int specSize = MeasureSpec.GetSize(measureSpec);
-            
+
             if (specMode == MeasureSpecMode.Exactly)
             {
                 result = specSize;
@@ -150,7 +151,7 @@ namespace Messier16.Forms.Android.Controls.Native.RatingBar
                     fillBox = new RectF(left, 0, left + trueStarSize * (Rating - i), trueStarSize);
                 }
                 if (fillBox != null)
-                    canvas.DrawRect(fillBox, new Paint() { Color = Color.Red });
+                    canvas.DrawRect(fillBox, fillPaint);
                 canvas.Restore();
             }
         }
@@ -193,12 +194,28 @@ namespace Messier16.Forms.Android.Controls.Native.RatingBar
             return true;
         }
 
-        float Rating;
+
+        float rating = -1;
+        float Rating
+        {
+            set
+            {
+                if (value != rating)
+                {
+                    rating = value;
+                    Invalidate();
+                }
+            }
+            get
+            {
+                return rating;
+            }
+        }
+
         void CalculateNewRating(float movement)
         {
-            Rating = MaxStars * (movement / Width);
+            Rating = (float)Math.Ceiling(MaxStars * (movement / Width));
 
-            Invalidate();
         }
     }
 }
