@@ -19,7 +19,7 @@ namespace TestApp.Pages.RatingBarPages
             var ratingBar2 = new RatingBar();
             ratingBar2.FilledImage = "star_filled.png";
             ratingBar2.Image = "star.png";
-            ratingBar2.MaxRating = 5;
+            ratingBar2.MaxRating = 6;
             ratingBar2.HeightRequest = 50;
 
             var ratingBeer = new RatingBar();

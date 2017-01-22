@@ -34,8 +34,7 @@ namespace Messier16.Forms.Android.Controls
         protected override void OnElementChanged(ElementChangedEventArgs<RatingBar> e)
         {
             base.OnElementChanged(e);
-            if (e.OldElement != null || Element == null) return;
-
+            
             if (Control == null)
             {
                 var layout = new LinearLayout(Context);
