@@ -2,7 +2,7 @@
 <package>
   <metadata>
     <id>Messier16.Forms.Controls</id>
-    <version>0.2.0</version>
+    <version>0.2.1</version>
     <title>Messier16 controls for Xamarin.Forms</title>
     <authors>Antonio Feregrino</authors>
     <owners>Messier16</owners>
@@ -11,10 +11,10 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Want to use checkboxes or rating bars in your Xamarin.Forms app? Messier16 controls for Xamarin.Forms. built against Xamarin.Forms 2.2.0.45</description>
     <releaseNotes></releaseNotes>
-    <copyright>Antonio Feregrino, 2016</copyright>
+    <copyright>Antonio Feregrino, 2017</copyright>
     <tags>Xamarin.Forms, Xamarin, Checkbox, RatingBar</tags>
     <dependencies>
-      <dependency id="Xamarin.Forms" version="2.2.0.45" />
+      <dependency id="Xamarin.Forms" version="2.3.3.180" />
     </dependencies>
   </metadata>  
   <files>
