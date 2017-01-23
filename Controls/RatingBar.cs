@@ -18,6 +18,9 @@ namespace Messier16.Forms.Controls
         public static readonly BindableProperty FilledImageProperty =
             BindableProperty.Create(nameof(FilledImage), typeof(FileImageSource), typeof(RatingBar), default(FileImageSource));
 
+        public static readonly BindableProperty FillColorProperty =
+            BindableProperty.Create(nameof(FillColor), typeof(Color), typeof(RatingBar), default(Color));
+
         public int Rating
         {
             get { return (int)GetValue(RatingProperty); }
@@ -34,6 +37,12 @@ namespace Messier16.Forms.Controls
         {
             get { return (FileImageSource)GetValue(FilledImageProperty); }
             set { SetValue(FilledImageProperty, value); }
+        }
+
+        public Color FillColor
+        {
+            get { return (Color)GetValue(FillColorProperty); }
+            set { SetValue(FillColorProperty, value); }
         }
 
         public int MaxRating { get; set; }
