@@ -22,24 +22,25 @@ namespace Messier16.Forms.Uwp.Controls
         protected override void OnElementChanged(ElementChangedEventArgs<Checkbox> e)
         {
             base.OnElementChanged(e);
-            if (Control == null)
-            {
-                var checkBox = new CheckBox();
-                checkBox.IsThreeState = false;
-                SetNativeControl(checkBox);
-            }
-
-
             if (e.OldElement != null)
             {
                 // Unsubscribe from event handlers and cleanup any resources
-                Control.Checked -= CheckBoxChecked;
-                Control.Unchecked -= CheckBoxUnchecked;
+                if (Control != null)
+                {
+                    Control.Checked -= CheckBoxChecked;
+                    Control.Unchecked -= CheckBoxUnchecked;
+                }
             }
 
             if (e.NewElement != null)
             {
                 // Configure the control and subscribe to event handlers
+                if (Control == null)
+                {
+                    var checkBox = new CheckBox();
+                    checkBox.IsThreeState = false;
+                    SetNativeControl(checkBox);
+                }
 
                 // You should only create the control once (if Control is null), 
                 // and then you should apply the values of NewElement to that control every time that NewElement is not null. Something like this:
