@@ -1,4 +1,4 @@
-version: '0.3.2'
+version: '{build}'
 configuration: Release
 before_build:
   - nuget restore
