@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26228.4
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestApp", "TestApp.csproj", "{65443FE2-F8B6-4CB5-B807-25141F3718E3}"
 EndProject
@@ -43,6 +43,7 @@ Global
 		{65443FE2-F8B6-4CB5-B807-25141F3718E3}.Debug|x86.Build.0 = Debug|Any CPU
 		{65443FE2-F8B6-4CB5-B807-25141F3718E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{65443FE2-F8B6-4CB5-B807-25141F3718E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{65443FE2-F8B6-4CB5-B807-25141F3718E3}.Release|Any CPU.Deploy.0 = Release|Any CPU
 		{65443FE2-F8B6-4CB5-B807-25141F3718E3}.Release|ARM.ActiveCfg = Release|Any CPU
 		{65443FE2-F8B6-4CB5-B807-25141F3718E3}.Release|ARM.Build.0 = Release|Any CPU
 		{65443FE2-F8B6-4CB5-B807-25141F3718E3}.Release|iPhone.ActiveCfg = Release|Any CPU
@@ -90,6 +91,7 @@ Global
 		{17352957-C358-48D0-9F17-97E0D64CEFA7}.Debug|x86.Deploy.0 = Debug|Any CPU
 		{17352957-C358-48D0-9F17-97E0D64CEFA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{17352957-C358-48D0-9F17-97E0D64CEFA7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{17352957-C358-48D0-9F17-97E0D64CEFA7}.Release|Any CPU.Deploy.0 = Release|Any CPU
 		{17352957-C358-48D0-9F17-97E0D64CEFA7}.Release|ARM.ActiveCfg = Release|Any CPU
 		{17352957-C358-48D0-9F17-97E0D64CEFA7}.Release|ARM.Build.0 = Release|Any CPU
 		{17352957-C358-48D0-9F17-97E0D64CEFA7}.Release|ARM.Deploy.0 = Release|Any CPU
