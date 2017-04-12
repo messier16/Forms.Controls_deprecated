@@ -194,15 +194,18 @@ namespace Messier16.Forms.Android.Controls.Native.RatingBar
             return true;
         }
 
+        public event EventHandler<float> RatingChanged;
+
 
         float rating = -1;
-        float Rating
+        public float Rating
         {
             set
             {
                 if (value != rating)
                 {
                     rating = value;
+                    RatingChanged?.Invoke(this, rating);
                     Invalidate();
                 }
             }

@@ -34,62 +34,57 @@ namespace Messier16.Forms.Android.Controls
         protected override void OnElementChanged(ElementChangedEventArgs<RatingBar> e)
         {
             base.OnElementChanged(e);
-            
-            if (Control == null)
-            {
-                var layout = new LinearLayout(Context);
 
-                // Instantiate the native control and assign it to the Control property
-                var ratingBar = new Messier16RatingBar(Context)
-                {
-                    //IsIndicator = !Element.IsEnabled,
-                    //StepSize = 1.0f,
-                    //Max = Element.MaxRating,
-                    MaxStars = Element.MaxRating,
-                    FillColor = global::Android.Graphics.Color.Argb(255, 84, 142, 205),
-                    StrokeColor = global::Android.Graphics.Color.Argb(255, 66, 121, 205)
-                };
 
-                // http://stackoverflow.com/questions/3858600/how-to-make-ratingbar-to-show-five-stars#comment4151898_3859248
-                ratingBar.LayoutParameters = new LayoutParams(LayoutParams.WrapContent, LayoutParams.MatchParent);
-                layout.LayoutParameters = new LayoutParams(LayoutParams.MatchParent, LayoutParams.MatchParent);
 
-                //layout.AddView(ratingBar);
-                SetNativeControl(ratingBar);
-            }
+            base.OnElementChanged(e);
+
 
             //if (e.OldElement != null)
-            //{
-            //    // Unsubscribe from event handlers and cleanup any resources
-            //    var ratingBar = Control.GetChildAt(0) as NativeRatingBar;
-            //    ratingBar.RatingBarChange -= Control_RatingBarChange;
-            //}
-            //if (e.NewElement != null)
-            //{
-            //    // Configure the control and subscribe to event handlers
-            //    var ratingBar = Control.GetChildAt(0) as NativeRatingBar;
-            //    ratingBar.RatingBarChange += Control_RatingBarChange;
-            //}
+            //    e.OldElement.Cha
+
+            if (e.NewElement != null)
+            {
+                if (Control == null)
+                {
+                    var layout = new LinearLayout(Context);
+
+                    // Instantiate the native control and assign it to the Control property
+                    var ratingBar = new Messier16RatingBar(Context)
+                    {
+                        //IsIndicator = !Element.IsEnabled,
+                        //StepSize = 1.0f,
+                        //Max = Element.MaxRating,
+                        MaxStars = Element.MaxRating,
+                        FillColor = global::Android.Graphics.Color.Argb(255, 84, 142, 205),
+                        StrokeColor = global::Android.Graphics.Color.Argb(255, 66, 121, 205)
+                    };
+
+                    ratingBar.RatingChanged += RatingBarOnRatingChanged;
+
+                    // http://stackoverflow.com/questions/3858600/how-to-make-ratingbar-to-show-five-stars#comment4151898_3859248
+                    ratingBar.LayoutParameters = new LayoutParams(LayoutParams.WrapContent, LayoutParams.MatchParent);
+                    layout.LayoutParameters = new LayoutParams(LayoutParams.MatchParent, LayoutParams.MatchParent);
+
+                    //layout.AddView(ratingBar);
+                    SetNativeControl(ratingBar);
+                }
+                //else
+                //{
+                //    UpdateEnabled();
+                //}
+
+                //e.NewElement.CheckedChanged += OnElementCheckedChanged;
+                Control.Rating = e.NewElement.Rating;
+
+            }
+
+            
         }
 
-        //protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
-        //{
-        //    if (Element == null || Control == null) return;
-
-        //    if (e.PropertyName.Equals(nameof(RatingBar.Rating)))
-        //    {
-        //        var ratingBar = Control.GetChildAt(0) as NativeRatingBar;
-        //        ratingBar.Rating = Element.Rating;
-        //    }
-        //    else
-        //    {
-        //        base.OnElementPropertyChanged(sender, e);
-        //    }
-        //}
-
-        //private void Control_RatingBarChange(object sender, NativeRatingBar.RatingBarChangeEventArgs e)
-        //{
-        //    Element.Rating = (int)e.Rating;
-        //}
+        private void RatingBarOnRatingChanged(object sender, float f)
+        {
+            Element.Rating = (int)f;
+        }
     }
 }
