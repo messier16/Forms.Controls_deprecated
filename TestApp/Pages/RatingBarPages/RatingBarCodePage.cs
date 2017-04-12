@@ -11,18 +11,21 @@ namespace TestApp.Pages.RatingBarPages
         {
 
             var ratingBar1 = new RatingBar();
+            ratingBar1.FillColor = Color.Green; 
             ratingBar1.FilledImage = "star_filled.png";
             ratingBar1.Image = "star.png";
             ratingBar1.MaxRating = 10;
             ratingBar1.HeightRequest = 50;
 
             var ratingBar2 = new RatingBar();
+            ratingBar2.FillColor = Color.Maroon;
             ratingBar2.FilledImage = "star_filled.png";
             ratingBar2.Image = "star.png";
             ratingBar2.MaxRating = 6;
             ratingBar2.HeightRequest = 50;
 
             var ratingBeer = new RatingBar();
+            ratingBeer.FillColor = Color.Navy;
             ratingBeer.FilledImage = "beer_filled.png";
             ratingBeer.Image = "beer.png";
             ratingBeer.MaxRating = 5;

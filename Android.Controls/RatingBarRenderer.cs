@@ -56,8 +56,8 @@ namespace Messier16.Forms.Android.Controls
                         //StepSize = 1.0f,
                         //Max = Element.MaxRating,
                         MaxStars = Element.MaxRating,
-                        FillColor = global::Android.Graphics.Color.Argb(255, 84, 142, 205),
-                        StrokeColor = global::Android.Graphics.Color.Argb(255, 66, 121, 205)
+                        FillColor = e.NewElement.FillColor.ToAndroid(),
+                        StrokeColor = e.NewElement.FillColor.ToAndroid()
                     };
 
                     ratingBar.RatingChanged += RatingBarOnRatingChanged;
