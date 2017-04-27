@@ -9,7 +9,7 @@ namespace TestApp.Pages.CheckboxPages
     {
         public CheckboxCodePage()
         {
-            var cb1 = new Checkbox() { TickColor = Color.Blue, WidthRequest = 55, HeightRequest = 55 };
+			var cb1 = new Checkbox() { CheckboxBackgroundColor = Color.Yellow, TickColor = Color.Red, WidthRequest = 55, HeightRequest = 55 };
             var cb2 = new Checkbox()
             {
                 CheckboxBackgroundColor = Color.FromHex("5480BE"),
@@ -20,9 +20,9 @@ namespace TestApp.Pages.CheckboxPages
             var cb3 = new Checkbox() { WidthRequest = 35, Checked = true };
             var cb4 = new Checkbox()
             {
-#if DEBUG
+				#if DEBUG
                 AutomationId = "cb4",
-                #endif
+				#endif
                 TickColor = Color.Blue,
                 CheckboxBackgroundColor = Color.Maroon,
                 IsVisible = cb2.Checked
