@@ -1,4 +1,6 @@
 using System;
+using Android.Content.Res;
+using Android.Support.V7.Widget;
 using Android.Widget;
 using Messier16.Forms.Android.Controls;
 using Messier16.Forms.Controls;
@@ -8,7 +10,7 @@ using Xamarin.Forms.Platform.Android;
 [assembly: ExportRenderer(typeof(Checkbox), typeof(CheckboxRenderer))]
 namespace Messier16.Forms.Android.Controls
 {
-    public class CheckboxRenderer : ViewRenderer<Checkbox, CheckBox>, CompoundButton.IOnCheckedChangeListener
+    public class CheckboxRenderer : ViewRenderer<Checkbox, AppCompatCheckBox>, CompoundButton.IOnCheckedChangeListener
     {
         /// <summary>
         /// Used for registration with dependency service
@@ -68,7 +70,13 @@ namespace Messier16.Forms.Android.Controls
             {
                 if (Control == null)
                 {
-                    var checkBox = new CheckBox(Context);
+                    var checkBox = new AppCompatCheckBox(Context);
+
+                    if (Element.CheckboxBackgroundColor != default(Color))
+                    {
+                        var backgroundColor = GetBackgroundColorStateList(Element.CheckboxBackgroundColor);
+                        checkBox.SupportButtonTintList = backgroundColor;
+                    }
                     checkBox.SetOnCheckedChangeListener(this);
                     SetNativeControl(checkBox);
                 }
@@ -79,11 +87,20 @@ namespace Messier16.Forms.Android.Controls
 
                 e.NewElement.CheckedChanged += OnElementCheckedChanged;
                 Control.Checked = e.NewElement.Checked;
-
             }
-
-            base.OnElementChanged(e);
         }
+
+        private ColorStateList GetBackgroundColorStateList(Color color) => new ColorStateList(
+                        new[] {
+                                new int[] { -global::Android.Resource.Attribute.StateEnabled },  // checked
+                                new int[] { -global::Android.Resource.Attribute.StateChecked }, // unchecked
+                                new int[] { global::Android.Resource.Attribute.StateChecked }  // checked
+                        },
+                        new int[] {
+                                color.WithSaturation(0.1).ToAndroid(),
+                                color.ToAndroid(),
+                                color.ToAndroid()
+                        });
 
         private void OnElementCheckedChanged(object sender, CheckedChangedEventArgs e)
         {
