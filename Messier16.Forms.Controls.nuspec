@@ -2,7 +2,7 @@
 <package>
   <metadata>
     <id>Messier16.Forms.Controls</id>
-    <version>0.5.0-pre</version>
+    <version>0.5.1</version>
     <title>Messier16 controls for Xamarin.Forms</title>
     <authors>Antonio Feregrino</authors>
     <owners>Messier16</owners>
