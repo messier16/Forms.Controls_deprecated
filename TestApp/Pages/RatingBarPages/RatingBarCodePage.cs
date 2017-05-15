@@ -7,6 +7,7 @@ namespace TestApp.Pages.RatingBarPages
 {
     public class RatingBarCodePage : ContentPage
     {
+        RatingBar SetRating;
         public RatingBarCodePage()
         {
 
@@ -30,6 +31,20 @@ namespace TestApp.Pages.RatingBarPages
             ratingBeer.Image = "beer.png";
             ratingBeer.MaxRating = 5;
             ratingBeer.HeightRequest = 50;
+
+            SetRating = new RatingBar();
+            SetRating.FillColor = Color.Navy;
+            SetRating.FilledImage = "beer_filled.png";
+            SetRating.Image = "beer.png";
+            SetRating.MaxRating = 5;
+            SetRating.HeightRequest = 50;
+
+            var retingTextBox = new Entry
+            {
+                Keyboard = Keyboard.Numeric
+            };
+            retingTextBox.TextChanged += RetingTextBox_TextChanged;
+
 
 
             var rating2Label = new Label
@@ -72,7 +87,7 @@ namespace TestApp.Pages.RatingBarPages
                 {
                     new RowDefinition { Height = new GridLength(1,GridUnitType.Auto)},
                     new RowDefinition { Height = new GridLength(1,GridUnitType.Auto)},
-                    new RowDefinition { Height = new GridLength(1,GridUnitType.Auto)}
+                    new RowDefinition { Height = new GridLength(1,GridUnitType.Auto)},
                 }
             };
             
@@ -90,10 +105,19 @@ namespace TestApp.Pages.RatingBarPages
                 VerticalOptions = LayoutOptions.Center,
                 Children =
                 {
+                    SetRating,
+                    retingTextBox,
                     ratingBar1,
                     grid
                 }
             };
+        }
+
+        private void RetingTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            int rating = 0;
+            Int32.TryParse(e.NewTextValue, out rating);
+            SetRating.Rating = rating;
         }
     }
 }
