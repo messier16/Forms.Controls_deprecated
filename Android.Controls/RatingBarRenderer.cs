@@ -35,26 +35,14 @@ namespace Messier16.Forms.Android.Controls
         {
             base.OnElementChanged(e);
 
-
-
-            base.OnElementChanged(e);
-
-
-            //if (e.OldElement != null)
-            //    e.OldElement.Cha
-
             if (e.NewElement != null)
             {
                 if (Control == null)
                 {
                     var layout = new LinearLayout(Context);
 
-                    // Instantiate the native control and assign it to the Control property
                     var ratingBar = new Messier16RatingBar(Context)
                     {
-                        //IsIndicator = !Element.IsEnabled,
-                        //StepSize = 1.0f,
-                        //Max = Element.MaxRating,
                         MaxStars = Element.MaxRating,
                         FillColor = e.NewElement.FillColor.ToAndroid(),
                         StrokeColor = e.NewElement.FillColor.ToAndroid()
@@ -66,20 +54,23 @@ namespace Messier16.Forms.Android.Controls
                     ratingBar.LayoutParameters = new LayoutParams(LayoutParams.WrapContent, LayoutParams.MatchParent);
                     layout.LayoutParameters = new LayoutParams(LayoutParams.MatchParent, LayoutParams.MatchParent);
 
-                    //layout.AddView(ratingBar);
                     SetNativeControl(ratingBar);
                 }
-                //else
-                //{
-                //    UpdateEnabled();
-                //}
 
-                //e.NewElement.CheckedChanged += OnElementCheckedChanged;
                 Control.Rating = e.NewElement.Rating;
-
             }
+        }
 
-            
+        protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName.Equals(nameof(Element.Rating)))
+            {
+                Control.Rating = Element.Rating;
+            }
+            else
+            {
+                base.OnElementPropertyChanged(sender, e);
+            }
         }
 
         private void RatingBarOnRatingChanged(object sender, float f)

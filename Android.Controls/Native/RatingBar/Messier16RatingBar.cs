@@ -129,7 +129,6 @@ namespace Messier16.Forms.Android.Controls.Native.RatingBar
             var starCenter = starSizeWidth / (float)2;
 
             var rating = Rating;
-            System.Diagnostics.Debug.Write($"{Rating}");
             for (int i = 0; i < MaxStars; i++)
             {
                 var middle = starSizeWidth * i + starSizeWidth / 2;
@@ -218,7 +217,6 @@ namespace Messier16.Forms.Android.Controls.Native.RatingBar
         void CalculateNewRating(float movement)
         {
             Rating = (float)Math.Ceiling(MaxStars * (movement / Width));
-
         }
     }
 }
