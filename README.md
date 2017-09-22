@@ -1,3 +1,7 @@
+## This repository is no longer being mantained, you should check the new one. Which is pretty much the same, except that the other one is now .NET standarized
+
+# (Here is the link)[https://github.com/messier16/Forms.Controls]
+
 # Forms.Controls
 Home of all Messier16 Xamarin.Forms controls :grin:
 
